@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">FrontOprosnik</string>
+    <string name="show">СТАТИСТИКА</string>
+    <string name="go_test">ПРОЙТИ ОПРОС</string>
+    <string name="auth">АВТОРИЗОВАТЬСЯ</string>
+    <string name="auth_submit">ВОЙТИ</string>
+    <string name="name_hint">ИМЯ</string>
+    <string name="sname_hint">ФАМИЛИЯ</string>
+    <string name="nickname_hint">NICKNAME</string>
+    <string name="password_hint">ПАРОЛЬ</string>
+    <string name="reg">ЗАРЕГИСТРИРОВАТЬСЯ</string>
+    <string name="in_progress">В РАЗРАБОТКЕ...</string>
+    <string name="questionNumb">Вопрос №</string>
+    <string name="question1">Идет получение вопроса...</string>
+    <string name="answer1">Идет получение ответа...</string>
+    <string name="answer2">Идет получение ответа...</string>
+    <string name="answer3">Идет получение ответа...</string>
+    <string name="answer4">Идет получение ответа...</string>
+    <string name="answer5">Идет получение ответа...</string>
+    <string name="answer6">Идет получение ответа...</string>
+    <string name="answer7">Идет получение ответа...</string>
+</resources>
