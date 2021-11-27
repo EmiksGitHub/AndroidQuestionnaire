@@ -76,13 +76,11 @@ public class AuthActivity extends AppCompatActivity {
             }
         };
         requestQueue.add(request_json);
-        Log.d("Ключ в конце метода btn", token);
     }
 
 
 
     public void startActivity(String string) {
-        Log.d("Ключ в начале метода", token);
         Intent main = new Intent(this, MainActivity.class);
         main.putExtra("token_key", string);
         startActivity(main);

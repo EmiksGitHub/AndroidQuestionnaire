@@ -9,9 +9,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.*;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,7 +48,7 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
         Intent intent = getIntent();
         token = intent.getStringExtra("token");
-        textViewTestQuestion = (TextView) findViewById(R.id.textViewTestQuestion);
+        textViewTestQuestion = (TextView) findViewById(R.id.textViewDescription);
         textViewTest2 = (TextView) findViewById(R.id.textViewTest2);
         btnTest1 = (Button) findViewById(R.id.btnTest1);
         btnTest2 = (Button) findViewById(R.id.btnTest2);
@@ -179,12 +184,17 @@ public class TestActivity extends AppCompatActivity {
         }
     }
     private void setQuestionText(List<JSONQuestion> questionList, int currentQuestionNumber) {
-        JSONQuestion jsonQuestionInThisMethod = questionList.get(currentQuestionNumber);
-        currentQuestion.setId(jsonQuestionInThisMethod.getId()); // Здесь в первый раз берется id=1
-        currentQuestion.setNumber(jsonQuestionInThisMethod.getNumber());
-        currentQuestion.setQuestionText(jsonQuestionInThisMethod.getQuestionText());
-        textViewTestQuestion.setText(jsonQuestionInThisMethod.getQuestionText());
-        textViewTest2.setText(jsonQuestionInThisMethod.getId() + "/25");
+        if (currentQuestionNumber == 25) {
+            finishAttempt();
+        } else {
+            JSONQuestion jsonQuestionInThisMethod = questionList.get(currentQuestionNumber);
+            currentQuestion.setId(jsonQuestionInThisMethod.getId()); // Здесь в первый раз берется id=1
+            //id = currentQuestionNumber - 1
+            currentQuestion.setNumber(jsonQuestionInThisMethod.getNumber());
+            currentQuestion.setQuestionText(jsonQuestionInThisMethod.getQuestionText());
+            textViewTestQuestion.setText(jsonQuestionInThisMethod.getQuestionText());
+            textViewTest2.setText(jsonQuestionInThisMethod.getId() + "/25");
+        }
     }
     public void answer(int numberButton) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -221,5 +231,54 @@ public class TestActivity extends AppCompatActivity {
             }
         };
         requestQueue.add(request);
+    }
+    public void finishAttempt() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        Map params = new HashMap();
+        String URL = "http://31.40.51.218:8080/api/test/finishAttempt";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if (!response.equals(null)) {
+                            try {
+                                JSONAttempt jsonAttempt = new JSONAttempt();
+                                jsonAttempt.setId(response.getInt("id"));
+                                goToResultActivity(jsonAttempt);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Log.e("Your Array Response", "Data Null");
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("error is ", "" + error);
+            }
+        }) {
+            @Override
+            public Map getHeaders() throws AuthFailureError {
+                Map params = new HashMap();
+                params.put("Authorization", "Bearer "+ token);
+                return params;
+            }
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+        requestQueue.add(request);
+    }
+
+    private void goToResultActivity(JSONAttempt jsonAttempt) {
+        /*textViewTestQuestion.setText("Тест успешно завершен! ID вашей попытки: " +
+                jsonAttempt.getId());*/
+        Intent i = new Intent(this, ResultActivity.class);
+        i.putExtra("token_key", token);
+        Log.d("Ключ", token);
+        i.putExtra("id_attempt_key", Integer.toString(jsonAttempt.getId()));
+        startActivity(i);
     }
 }
