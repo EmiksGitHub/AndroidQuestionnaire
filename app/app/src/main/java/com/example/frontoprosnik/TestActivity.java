@@ -47,7 +47,7 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         Intent intent = getIntent();
-        token = intent.getStringExtra("token");
+        token = intent.getStringExtra("token_key");
         textViewTestQuestion = (TextView) findViewById(R.id.textViewQuestion);
         textViewTest2 = (TextView) findViewById(R.id.textViewTest2);
         btnTest1 = (Button) findViewById(R.id.btnTest1);
@@ -98,7 +98,8 @@ public class TestActivity extends AppCompatActivity {
     public void getAnswers () {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="http://31.40.51.218:8080/api/test/answers";
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url,
+                null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -159,7 +160,9 @@ public class TestActivity extends AppCompatActivity {
                             for (int i = 0; i<jsonArray.length();i++) {
                                 JSONQuestion jsonQuestion = new JSONQuestion();
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                jsonQuestion.setQuestionText(jsonObject.getString("questionText"));
+                                jsonQuestion.setQuestionText(jsonObject.getString(
+                                        "questionText"
+                                ));
                                 jsonQuestion.setNumber(jsonObject.getInt("number"));
                                 jsonQuestion.setId(jsonObject.getInt("id"));
                                 addQuestionInQuestions(jsonQuestion);
@@ -188,8 +191,7 @@ public class TestActivity extends AppCompatActivity {
             finishAttempt();
         } else {
             JSONQuestion jsonQuestionInThisMethod = questionList.get(currentQuestionNumber);
-            currentQuestion.setId(jsonQuestionInThisMethod.getId()); // Здесь в первый раз берется id=1
-            //id = currentQuestionNumber - 1
+            currentQuestion.setId(jsonQuestionInThisMethod.getId());
             currentQuestion.setNumber(jsonQuestionInThisMethod.getNumber());
             currentQuestion.setQuestionText(jsonQuestionInThisMethod.getQuestionText());
             textViewTestQuestion.setText(jsonQuestionInThisMethod.getQuestionText());
@@ -202,7 +204,8 @@ public class TestActivity extends AppCompatActivity {
         params.put("idA", numberButton);
         params.put("idQ", Long.toString(currentQuestion.getId()));
         String URL = "http://31.40.51.218:8080/api/test/giveAnswer";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL,
+                new JSONObject(params),
                 new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -236,7 +239,8 @@ public class TestActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         Map params = new HashMap();
         String URL = "http://31.40.51.218:8080/api/test/finishAttempt";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL,
+                new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

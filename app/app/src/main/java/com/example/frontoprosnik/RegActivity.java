@@ -27,7 +27,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegActivity extends AppCompatActivity implements TextWatcher, CompoundButton.OnCheckedChangeListener {
+public class RegActivity extends AppCompatActivity implements
+        TextWatcher, CompoundButton.OnCheckedChangeListener {
 
     private EditText editTextRegNickname;
     private EditText editTextRegPassword;
@@ -74,11 +75,11 @@ public class RegActivity extends AppCompatActivity implements TextWatcher, Compo
         if (editTextRegDate.getText().toString() != "") {
             date = editTextRegDate.getText().toString();
             dateNew = date.substring(6) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2);
-            goToAuthActivity(v);
+            regRequest(v);
         }
     }
 
-    public void goToAuthActivity(View view) {
+    public void regRequest(View view) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         String URL = "http://31.40.51.218:8080/api/auth/signup";
         Map params = new HashMap();
@@ -86,13 +87,15 @@ public class RegActivity extends AppCompatActivity implements TextWatcher, Compo
         params.put("password", editTextRegPassword.getText().toString());
         params.put("sexM", sexM);
         params.put("username", editTextRegNickname.getText().toString());
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL,
+                new JSONObject(params),
                 new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             (response.getString("message")), Toast.LENGTH_SHORT);
+                    goToAuthActivity();
                     toast.show();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -111,10 +114,11 @@ public class RegActivity extends AppCompatActivity implements TextWatcher, Compo
         };
 
         requestQueue.add(request);
+    }
 
-
-        Intent auth = new Intent(this, AuthActivity.class);
-        startActivity(auth);
+    private void goToAuthActivity() {
+        Intent i = new Intent(this, AuthActivity.class);
+        startActivity(i);
     }
 
     @Override

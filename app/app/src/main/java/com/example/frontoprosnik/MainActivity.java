@@ -44,13 +44,28 @@ public class MainActivity extends AppCompatActivity {
             btnMainAuth.setVisibility(View.VISIBLE);
             btnMainProfile.setVisibility(View.INVISIBLE);
         }
-        Log.d("Method OnCreate", "выполнен.");
+        View.OnClickListener ButtonClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.btnMainProfile:
+                        goToProfileActivity(v);
+                        break;
+                    case R.id.btnMainAuth:
+                        goToAuthActivity(v);
+                        break;
+                }
+            }
+        };
+        btnMainProfile.setOnClickListener(ButtonClickListener);
+        btnMainAuth.setOnClickListener(ButtonClickListener);
     }
 
     public void goToTestActivity(View view) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         String URL = "http://31.40.51.218:8080/api/test/startAttempt";
-        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if (!response.equals(null)) {
@@ -69,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public Map getHeaders() throws AuthFailureError {
                 Map params = new HashMap();
-                Log.d("Token is ", token);
                 params.put("Authorization", "Bearer "+ token);
                 return params;
             }
@@ -77,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
 
         Intent test = new Intent(this, TestActivity.class);
-        test.putExtra("token", token);
+        test.putExtra("token_key", token);
         startActivity(test);
     }
 
@@ -89,5 +103,11 @@ public class MainActivity extends AppCompatActivity {
     public void goToStatisticActivity(View view) {
         Intent statistic = new Intent(this, StatisticActivity.class);
         startActivity(statistic);
+    }
+
+    public void goToProfileActivity(View view) {
+        Intent profile = new Intent(this, ProfileActivity.class);
+        profile.putExtra("token_key", token);
+        startActivity(profile);
     }
 }

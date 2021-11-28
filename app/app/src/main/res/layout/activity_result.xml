@@ -26,7 +26,7 @@
         android:layout_height="51dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="@string/resultPoints"
+        android:text="@string/thereWillBeSomethingHere"
         android:textColor="@color/question_text"
         android:textSize="23dp"
         app:layout_constraintStart_toEndOf="@+id/textViewResultPointsHeader"
