@@ -48,7 +48,7 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
         Intent intent = getIntent();
         token = intent.getStringExtra("token");
-        textViewTestQuestion = (TextView) findViewById(R.id.textViewDescription);
+        textViewTestQuestion = (TextView) findViewById(R.id.textViewQuestion);
         textViewTest2 = (TextView) findViewById(R.id.textViewTest2);
         btnTest1 = (Button) findViewById(R.id.btnTest1);
         btnTest2 = (Button) findViewById(R.id.btnTest2);

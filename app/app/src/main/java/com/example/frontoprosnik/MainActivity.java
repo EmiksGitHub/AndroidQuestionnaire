@@ -1,12 +1,13 @@
 package com.example.frontoprosnik;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,19 +22,27 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
-    private  String token;
+    private String token;
+    private Button btnMainAuth;
+    private Button btnMainProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.textView);
+        btnMainAuth = (Button) findViewById(R.id.btnMainAuth);
+        btnMainProfile = (Button) findViewById(R.id.btnMainProfile);
         Intent intent = getIntent();
         token = intent.getStringExtra("token_key");
         Log.d("Method OnCreate", "Token is: " + token);
         if (token != null) {
             textView.setText("Вы авторизованы.");
+            btnMainAuth.setVisibility(View.INVISIBLE);
+            btnMainProfile.setVisibility(View.VISIBLE);
         } else {
             textView.setText("Вы не авторизованы");
+            btnMainAuth.setVisibility(View.VISIBLE);
+            btnMainProfile.setVisibility(View.INVISIBLE);
         }
         Log.d("Method OnCreate", "выполнен.");
     }
