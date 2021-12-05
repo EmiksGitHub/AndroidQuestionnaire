@@ -7,9 +7,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Switch;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,17 +26,19 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegActivity extends AppCompatActivity implements
-        TextWatcher, CompoundButton.OnCheckedChangeListener {
+public class RegActivity extends AppCompatActivity implements TextWatcher {
 
     private EditText editTextRegNickname;
     private EditText editTextRegPassword;
     private Button btnRegReg;
     private EditText editTextRegDate;
     private String date;
-    boolean ignore = false;
+    private Boolean ignore = false;
     private String dateNew;
     private Boolean sexM;
+    private RadioButton radioButtonRegSex1;
+    private RadioButton radioButtonRegSex2;
+    private boolean isSexChecked = false;
 
 
     @Override
@@ -46,36 +47,74 @@ public class RegActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_reg);
         editTextRegNickname = (EditText) findViewById(R.id.editTextRegNickname);
         editTextRegPassword = (EditText) findViewById(R.id.editTextRegPassword);
-        Switch switchRegSex = (Switch) findViewById(R.id.switchRegSex);
-        if (switchRegSex != null) {
-            switchRegSex.setOnCheckedChangeListener(this);
-        }
+        radioButtonRegSex1 = (RadioButton) findViewById(R.id.radioButtonRegSex1);
+        radioButtonRegSex2 = (RadioButton) findViewById(R.id.radioButtonRegSex2);
         editTextRegDate = (EditText) findViewById(R.id.editTextRegDate);
         btnRegReg = (Button) findViewById(R.id.btnRegReg);
         editTextRegDate.addTextChangedListener(this);
-        View.OnClickListener ButtonClickListener = new View.OnClickListener() {
+        View.OnClickListener radioButtonClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RadioButton rb = (RadioButton)v;
+                switch (rb.getId()) {
+                    case R.id.radioButtonRegSex1: {
+                        sexM = true;
+                        isSexChecked = true;
+                        break;
+                    }
+                    case R.id.radioButtonRegSex2: {
+                        sexM = false;
+                        isSexChecked = true;
+                        break;
+                    }
+                }
+            }
+        };
+        View.OnClickListener buttonClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeData(v);
             }
         };
-        btnRegReg.setOnClickListener(ButtonClickListener);
-    }
+        btnRegReg.setOnClickListener(buttonClickListener);
+        radioButtonRegSex1.setOnClickListener(radioButtonClickListener);
+        radioButtonRegSex2.setOnClickListener(radioButtonClickListener);
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            sexM = true;
-        } else {
-            sexM = false;
-        }
     }
 
     public void changeData(View v) {
-        if (editTextRegDate.getText().toString() != "") {
-            date = editTextRegDate.getText().toString();
-            dateNew = date.substring(6) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2);
-            regRequest(v);
+        date = editTextRegDate.getText().toString();
+        if (editTextRegNickname.getText().toString().length() <= 3) {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Nickname должен состоять как минимум из 4 символов", Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            if (editTextRegNickname.getText().toString().length() > 30) {
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Nickname должен состоять максимум из 30 символов", Toast.LENGTH_SHORT);
+                toast.show();
+            } else {
+                if (editTextRegPassword.getText().toString().length() <= 3) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Пароль должен состоять как минимум из 4 символов", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    if (!isSexChecked) {
+                        Toast toast = Toast.makeText(getApplicationContext(),
+                                "Пол должен быть отмечен", Toast.LENGTH_SHORT);
+                        toast.show();
+                    } else {
+                        if (date.length()==10) {
+                            dateNew = date.substring(6) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2);
+                            regRequest(v);
+                        } else {
+                            Toast toast = Toast.makeText(getApplicationContext(),
+                                    "Некорректно введена дата рождения", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -105,6 +144,9 @@ public class RegActivity extends AppCompatActivity implements
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Response error", "" + error);
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Регистрация не удалась", Toast.LENGTH_SHORT);
+                toast.show();
             }
         }) {
             @Override
