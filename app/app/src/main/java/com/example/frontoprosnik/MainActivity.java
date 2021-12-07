@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToTestActivity(View view) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String URL = "http://31.40.51.218:8080/api/test/startAttempt";
+        String URL = "http://192.168.43.108:8080/api/test/startAttempt";
         StringRequest request = new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
             @Override

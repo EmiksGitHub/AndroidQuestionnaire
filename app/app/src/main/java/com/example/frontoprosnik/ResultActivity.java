@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.frontoprosnik.json.JSONResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +35,6 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
         Intent intent = getIntent();
         token = intent.getStringExtra("token_key");
-        Log.d("Ключ", token);
         idAttempt = Integer.parseInt(intent.getStringExtra("id_attempt_key"));
         textViewPoints = (TextView) findViewById(R.id.textViewPoints);
         textViewDescription = (TextView) findViewById(R.id.textViewDescription);
@@ -42,15 +42,15 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void getResult(JSONResult jsonResult) {
-        textViewPoints.setText(Integer.toString(jsonResult.getPoints()));
-        textViewDescription.setText(jsonResult.getDescription());
+        textViewPoints.setText(Integer.toString(jsonResult.getPoints_general()));
+        textViewDescription.setText(jsonResult.getDescription_general());
     }
 
     private void getResultRequest() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         Map params = new HashMap();
         params.put("id", idAttempt);
-        String URL = "http://31.40.51.218:8080/api/test/getResults";
+        String URL = "http://192.168.43.108:8080/api/test/getResults";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -60,8 +60,8 @@ public class ResultActivity extends AppCompatActivity {
                                 JSONArray jsonArray = response.getJSONArray("results");
                                 JSONObject jsonObject = jsonArray.getJSONObject(6);
                                 JSONResult jsonResult = new JSONResult();
-                                jsonResult.setDescription(jsonObject.getString("description"));
-                                jsonResult.setPoints(jsonObject.getInt("points"));
+                                jsonResult.setDescription_general(jsonObject.getString("description"));
+                                jsonResult.setPoints_general(jsonObject.getInt("points"));
                                 getResult(jsonResult);
                             } catch (JSONException e) {
                                 e.printStackTrace();

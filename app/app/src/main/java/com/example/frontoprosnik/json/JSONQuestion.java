@@ -1,4 +1,4 @@
-package com.example.frontoprosnik;
+package com.example.frontoprosnik.json;
 
 public class JSONQuestion {
     private int id;

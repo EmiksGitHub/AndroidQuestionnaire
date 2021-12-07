@@ -16,6 +16,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.frontoprosnik.json.JSONAnswer;
+import com.example.frontoprosnik.json.JSONAttempt;
+import com.example.frontoprosnik.json.JSONQuestion;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,8 +42,8 @@ public class TestActivity extends AppCompatActivity {
     private Button btnTest2;
     private Button btnTest1;
     private String token;
-    List<JSONQuestion> questionList = new ArrayList<>();
-    JSONQuestion currentQuestion = new JSONQuestion();
+    private List<JSONQuestion> questionList = new ArrayList<>();
+    private JSONQuestion currentQuestion = new JSONQuestion();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +100,7 @@ public class TestActivity extends AppCompatActivity {
 
     public void getAnswers () {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://31.40.51.218:8080/api/test/answers";
+        String url ="http://192.168.43.108:8080/api/test/answers";
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url,
                 null,
                 new Response.Listener<JSONObject>() {
@@ -150,7 +153,7 @@ public class TestActivity extends AppCompatActivity {
 
     public void getQuestion() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://31.40.51.218:8080/api/test/questions";
+        String url ="http://192.168.43.108:8080/api/test/questions";
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONObject>() {
                     @Override
@@ -203,7 +206,7 @@ public class TestActivity extends AppCompatActivity {
         Map params = new HashMap();
         params.put("idA", numberButton);
         params.put("idQ", Long.toString(currentQuestion.getId()));
-        String URL = "http://31.40.51.218:8080/api/test/giveAnswer";
+        String URL = "http://192.168.43.108:8080/api/test/giveAnswer";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL,
                 new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -238,7 +241,7 @@ public class TestActivity extends AppCompatActivity {
     public void finishAttempt() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         Map params = new HashMap();
-        String URL = "http://31.40.51.218:8080/api/test/finishAttempt";
+        String URL = "http://192.168.43.108:8080/api/test/finishAttempt";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL,
                 new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -277,11 +280,8 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void goToResultActivity(JSONAttempt jsonAttempt) {
-        /*textViewTestQuestion.setText("Тест успешно завершен! ID вашей попытки: " +
-                jsonAttempt.getId());*/
         Intent i = new Intent(this, ResultActivity.class);
         i.putExtra("token_key", token);
-        Log.d("Ключ", token);
         i.putExtra("id_attempt_key", Integer.toString(jsonAttempt.getId()));
         startActivity(i);
     }

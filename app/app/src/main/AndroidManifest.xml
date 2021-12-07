@@ -37,6 +37,9 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="true" />
+        <activity
+            android:name=".AttemptsActivity"
+            android:exported="true" />
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 </manifest>

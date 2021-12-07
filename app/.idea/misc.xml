@@ -3,12 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/AndroidQuestionnaire/app/app/src/main/res/layout/activity_attempts.xml" value="0.27395833333333336" />
         <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/AndroidQuestionnaire/app/app/src/main/res/layout/activity_auth.xml" value="0.403125" />
         <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/AndroidQuestionnaire/app/app/src/main/res/layout/activity_main.xml" value="0.403125" />
-        <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/AndroidQuestionnaire/app/app/src/main/res/layout/activity_profile.xml" value="0.8" />
-        <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/AndroidQuestionnaire/app/app/src/main/res/layout/activity_reg.xml" value="0.403125" />
+        <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/AndroidQuestionnaire/app/app/src/main/res/layout/activity_profile.xml" value="0.4109375" />
+        <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/AndroidQuestionnaire/app/app/src/main/res/layout/activity_reg.xml" value="0.264" />
         <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/AndroidQuestionnaire/app/app/src/main/res/layout/activity_result.xml" value="0.403125" />
         <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/AndroidQuestionnaire/app/app/src/main/res/layout/activity_test.xml" value="0.403125" />
+        <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/AndroidQuestionnaire/app/app/src/main/res/layout/list_result.xml" value="0.26974358974358975" />
         <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/app/app/src/main/res/layout/activity_auth.xml" value="0.25416666666666665" />
         <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/app/app/src/main/res/layout/activity_main.xml" value="0.2907608695652174" />
         <entry key="..\:/Files/Edu/Studies/7Sem/MobileApplicationDevelopmentTechnologies/CourseProject/app/app/src/main/res/layout/activity_reg.xml" value="0.38125" />

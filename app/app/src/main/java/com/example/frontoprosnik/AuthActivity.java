@@ -46,10 +46,12 @@ public class AuthActivity extends AppCompatActivity {
         String nickname = editTextNickname.getText().toString();
         String password = editTextPassword.getText().toString();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String URL = "http://31.40.51.218:8080/api/auth/signin";
+        String URL = "http://192.168.43.108:8080/api/auth/signin";
         HashMap<String, String> params = new HashMap<>();
-        params.put("password", password);
-        params.put("username", nickname);
+        params.put("password", "mortal");
+        params.put("username", "mortal");
+        /*params.put("password", password);
+        params.put("username", nickname);FIXME*/
 
         JsonObjectRequest request_json = new JsonObjectRequest(URL, new JSONObject(params),
                 new Response.Listener<JSONObject>() {

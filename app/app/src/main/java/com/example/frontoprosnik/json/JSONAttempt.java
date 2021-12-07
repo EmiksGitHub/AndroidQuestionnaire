@@ -1,4 +1,4 @@
-package com.example.frontoprosnik;
+package com.example.frontoprosnik.json;
 
 public class JSONAttempt {
     private int id;
