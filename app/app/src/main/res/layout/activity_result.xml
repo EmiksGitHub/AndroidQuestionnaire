@@ -6,57 +6,398 @@
     android:layout_height="match_parent"
     tools:context=".TestActivity">
 
-    <TextView
-        android:id="@+id/textViewDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="@string/resultText"
-        android:textColor="@color/question_text"
-        android:textSize="20dp"
+    <Button
+        android:id="@+id/btnToMenu"
+        android:layout_width="80dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
+        android:text="Назад"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionHeader" />
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="125dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
+        android:text="Следующий фактор"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewPoints"
-        android:layout_width="wrap_content"
-        android:layout_height="51dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:id="@+id/point_plan_middle"
+        android:layout_width="75dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="9999dp"
+        android:gravity="center"
+        android:text="14–24"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/point_plan"
+        app:layout_constraintTop_toBottomOf="@+id/point_plan_middle3" />
+
+    <TextView
+        android:id="@+id/point_plan_middle3"
+        android:layout_width="75dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="9999dp"
+        android:gravity="center"
+        android:text="94–124"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/point_general"
+        app:layout_constraintTop_toBottomOf="@+id/pointHeader" />
+
+    <TextView
+        android:id="@+id/point_cele_middle"
+        android:layout_width="75dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="9999dp"
+        android:gravity="center"
+        android:text="28–38"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/point_cele"
+        app:layout_constraintTop_toBottomOf="@+id/point_plan_middle" />
+
+    <TextView
+        android:id="@+id/point_nast_middle"
+        android:layout_width="75dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="9999dp"
+        android:gravity="center"
+        android:text="14–25"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/point_nast"
+        app:layout_constraintTop_toBottomOf="@+id/point_cele_middle" />
+
+    <TextView
+        android:id="@+id/point_fiks_middle"
+        android:layout_width="75dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="9999dp"
+        android:gravity="center"
+        android:text="14–24"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/point_fiks"
+        app:layout_constraintTop_toBottomOf="@+id/point_nast_middle" />
+
+    <TextView
+        android:id="@+id/point_samo_middle"
+        android:layout_width="75dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="9999dp"
+        android:gravity="center"
+        android:text="5–15"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/point_samo"
+        app:layout_constraintTop_toBottomOf="@+id/point_fiks_middle" />
+
+    <TextView
+        android:id="@+id/point_orie_middle"
+        android:layout_width="75dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="9999dp"
+        android:gravity="center"
+        android:text="7–10"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/point_orie"
+        app:layout_constraintTop_toBottomOf="@+id/point_samo_middle" />
+
+    <TextView
+        android:id="@+id/headerNameFactor"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="9999dp"
+        android:layout_marginTop="7dp"
+        android:text="Общий показатель самоорганизации"
+        android:textColor="@color/question_text"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/headerPoints"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/headerPoints"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="9999dp"
+        android:gravity="center_vertical"
         android:text="@string/thereWillBeSomethingHere"
         android:textColor="@color/question_text"
         android:textSize="23dp"
-        app:layout_constraintStart_toEndOf="@+id/textViewResultPointsHeader"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewResultPointsHeader"
-        android:layout_width="226dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/resultPointsHeader"
-        android:textColor="@color/question_text"
-        android:textSize="23dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewDescriptionHeader"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
-        android:text="@string/resultTextHeader"
-        android:textColor="@color/question_text"
-        android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/headerNameFactor"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/deskHeaderPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Считается средним показателем (диапазон 94-124)"
+        android:textColor="@color/question_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewResultPointsHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/headerNameFactor" />
+
+    <TextView
+        android:id="@+id/FactorHeader"
+        android:layout_width="198dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="9999dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center|left"
+        android:text="Фактор"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/PointHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deskHeaderPoint" />
+
+    <TextView
+        android:id="@+id/PointHeader"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="Балл"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/pointHeader"
+        app:layout_constraintStart_toEndOf="@+id/FactorHeader"
+        app:layout_constraintTop_toBottomOf="@+id/deskHeaderPoint" />
+
+    <TextView
+        android:id="@+id/pointHeader"
+        android:layout_width="75dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="9999dp"
+        android:gravity="center"
+        android:text="Средний"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/PointHeader"
+        app:layout_constraintTop_toBottomOf="@+id/deskHeaderPoint" />
+
+    <TextView
+        android:id="@+id/factor_plan"
+        android:layout_width="198dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="9999dp"
+        android:gravity="center|left"
+        android:text="Планомерность"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_plan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/factor_plan2" />
+
+    <TextView
+        android:id="@+id/factor_plan2"
+        android:layout_width="198dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="9999dp"
+        android:gravity="center|left"
+        android:text="Общий показатель"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_general"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FactorHeader" />
+
+    <TextView
+        android:id="@+id/point_plan"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="@string/thereWillBeSomethingHere"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_plan_middle"
+        app:layout_constraintStart_toEndOf="@+id/factor_plan"
+        app:layout_constraintTop_toBottomOf="@+id/point_general" />
+
+    <TextView
+        android:id="@+id/point_general"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="@string/thereWillBeSomethingHere"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_plan_middle3"
+        app:layout_constraintStart_toEndOf="@+id/factor_plan2"
+        app:layout_constraintTop_toBottomOf="@+id/PointHeader" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="303dp"
+        android:layout_height="200dp"
+        android:gravity="top|left"
+        android:text="Длинное описание нашего фактора, будь то Ориентация на настоящее или вообще Общий показатель самоорганизации"
+        android:textColor="@color/question_text"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionHeader" />
+
+    <TextView
+        android:id="@+id/descriptionHeader"
+        android:layout_width="303dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:gravity="top|left"
+        android:text="Описание результата: "
+        android:textColor="@color/question_text"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/factor_orie" />
+
+    <TextView
+        android:id="@+id/factor_cele"
+        android:layout_width="198dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="9999dp"
+        android:gravity="center|left"
+        android:text="Целеустремленность"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_cele"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/factor_plan" />
+
+    <TextView
+        android:id="@+id/factor_nast"
+        android:layout_width="198dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="9999dp"
+        android:gravity="center|left"
+        android:text="Настойчивость"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_nast"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/factor_cele" />
+
+    <TextView
+        android:id="@+id/factor_fiks"
+        android:layout_width="198dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="9999dp"
+        android:gravity="center|left"
+        android:text="Фиксация"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_fiks"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/factor_nast" />
+
+    <TextView
+        android:id="@+id/factor_samo"
+        android:layout_width="198dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="9999dp"
+        android:gravity="center|left"
+        android:text="Самоорганизация"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_samo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/factor_fiks" />
+
+    <TextView
+        android:id="@+id/factor_orie"
+        android:layout_width="198dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="9999dp"
+        android:gravity="center|left"
+        android:text="Ориентация на настоящее"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_orie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/factor_samo" />
+
+    <TextView
+        android:id="@+id/point_cele"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="@string/thereWillBeSomethingHere"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_cele_middle"
+        app:layout_constraintStart_toEndOf="@+id/factor_cele"
+        app:layout_constraintTop_toBottomOf="@+id/point_plan" />
+
+    <TextView
+        android:id="@+id/point_nast"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="@string/thereWillBeSomethingHere"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_nast_middle"
+        app:layout_constraintStart_toEndOf="@+id/factor_nast"
+        app:layout_constraintTop_toBottomOf="@+id/point_cele" />
+
+    <TextView
+        android:id="@+id/point_fiks"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="@string/thereWillBeSomethingHere"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_fiks_middle"
+        app:layout_constraintStart_toEndOf="@+id/factor_fiks"
+        app:layout_constraintTop_toBottomOf="@+id/point_nast" />
+
+    <TextView
+        android:id="@+id/point_samo"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="@string/thereWillBeSomethingHere"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_samo_middle"
+        app:layout_constraintStart_toEndOf="@+id/factor_samo"
+        app:layout_constraintTop_toBottomOf="@+id/point_fiks" />
+
+    <TextView
+        android:id="@+id/point_orie"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="@string/thereWillBeSomethingHere"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_orie_middle"
+        app:layout_constraintStart_toEndOf="@+id/factor_orie"
+        app:layout_constraintTop_toBottomOf="@+id/point_samo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

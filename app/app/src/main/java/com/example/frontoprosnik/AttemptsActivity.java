@@ -46,7 +46,7 @@ public class AttemptsActivity extends AppCompatActivity implements AdapterView.O
 
     public void getResultsRequest() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://192.168.43.108:8080/api/test/attempts";
+        String url ="http://31.40.51.218:8080/api/test/attempts";
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONObject>() {
                     @Override
@@ -192,11 +192,8 @@ public class AttemptsActivity extends AppCompatActivity implements AdapterView.O
         ListViewAttemptsResultList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                JSONResult rslt = adapter.getItem(position);
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Вы нажали на попытку с id: " + rslt.getId_attempt(), Toast.LENGTH_SHORT);
-                toast.show();
-                goToResultActivity(rslt);
+                JSONResult jsonResult = adapter.getItem(position);
+                goToResultActivity(jsonResult);
             }
         });
     }
@@ -214,7 +211,7 @@ public class AttemptsActivity extends AppCompatActivity implements AdapterView.O
     private void goToResultActivity(JSONResult jsonResult) {
         Intent i = new Intent(this, ResultActivity.class);
         i.putExtra("token_key", token);
-        i.putExtra("id_attempt_key", String.valueOf(jsonResult.getId_attempt()));
+        i.putExtra("JSONResult", jsonResult);
         startActivity(i);
     }
 }

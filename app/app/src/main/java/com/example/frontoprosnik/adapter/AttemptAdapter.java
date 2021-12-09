@@ -1,5 +1,6 @@
 package com.example.frontoprosnik.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ public class AttemptAdapter extends ArrayAdapter<JSONResult> {
         this.inflater = LayoutInflater.from(context);
         this.mContext = context;
     }
+    @SuppressLint("SetTextI18n")
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
 
@@ -37,7 +39,8 @@ public class AttemptAdapter extends ArrayAdapter<JSONResult> {
         else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.textViewListAttemptName.setText(resultList.get(position).getData_attempt());
+        viewHolder.textViewListAttemptName.setText(resultList.get(position).getData_attempt() +
+                " (" + resultList.get(position).getPoints_general() + ")");
         /*viewHolder.ButtonListAttemptShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

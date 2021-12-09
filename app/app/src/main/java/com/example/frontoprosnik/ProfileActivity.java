@@ -54,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void getAccountRequest() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String URL = "http://192.168.43.108:8080/api/account/info";
+        String URL = "http://31.40.51.218:8080/api/account/info";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,URL,null,
                 new Response.Listener<JSONObject>() {
                     @Override

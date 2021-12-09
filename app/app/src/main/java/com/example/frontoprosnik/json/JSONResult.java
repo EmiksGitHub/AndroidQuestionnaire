@@ -1,6 +1,8 @@
 package com.example.frontoprosnik.json;
 
-public class JSONResult {
+import java.io.Serializable;
+
+public class JSONResult implements Serializable {
     private long id_attempt;
     private String data_attempt;
     private int points_general;

@@ -120,7 +120,7 @@ public class RegActivity extends AppCompatActivity implements TextWatcher {
 
     public void regRequest(View view) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String URL = "http://192.168.43.108:8080/api/auth/signup";
+        String URL = "http://31.40.51.218:8080/api/auth/signup";
         Map params = new HashMap();
         params.put("age", dateNew);
         params.put("password", editTextRegPassword.getText().toString());
