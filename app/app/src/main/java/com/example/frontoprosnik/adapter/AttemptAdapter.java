@@ -41,12 +41,6 @@ public class AttemptAdapter extends ArrayAdapter<JSONResult> {
         }
         viewHolder.textViewListAttemptName.setText(resultList.get(position).getData_attempt() +
                 " (" + resultList.get(position).getPoints_general() + ")");
-        /*viewHolder.ButtonListAttemptShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getItem(position);
-            }
-        });*/
         return convertView;
     }
 

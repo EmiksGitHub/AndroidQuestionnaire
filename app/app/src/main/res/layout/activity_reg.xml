@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
-            android:text="Мужской"
+            android:text="@string/male"
             android:textSize="18dp" />
 
         <RadioButton
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
-            android:text="Женский"
+            android:text="@string/female"
             android:textSize="18dp" />
     </RadioGroup>
 
@@ -95,7 +95,7 @@
         android:layout_width="191dp"
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
-        android:text="Выберите ваш пол:"
+        android:text="@string/gender"
         android:textAlignment="center"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"

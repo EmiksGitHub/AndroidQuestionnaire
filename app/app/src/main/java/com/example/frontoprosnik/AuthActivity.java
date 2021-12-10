@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,23 +36,18 @@ public class AuthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auth);
     }
 
-    public void goToRegActivity(View view) {
-        Intent reg = new Intent(this, RegActivity.class);
-        startActivity(reg);
-    }
-
     public void btnAuth(View view) throws InterruptedException {
         editTextNickname = (EditText) findViewById(R.id.editTextNickname);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         String nickname = editTextNickname.getText().toString();
         String password = editTextPassword.getText().toString();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String URL = "http://31.40.51.218:8080/api/auth/signin";
+        String URL = getResources().getString(R.string.URL) + "/api/auth/signin";
         HashMap<String, String> params = new HashMap<>();
-        params.put("password", "mortal");
-        params.put("username", "mortal");
-        /*params.put("password", password);
-        params.put("username", nickname);FIXME*/
+        /*params.put("password", "mortal");
+        params.put("username", "mortal");*/
+        params.put("password", password);
+        params.put("username", nickname);
 
         JsonObjectRequest request_json = new JsonObjectRequest(URL, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -68,8 +64,9 @@ public class AuthActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //editTextRegNickname.setText(error.toString());
-                Log.d("НЕ Ключ", error.toString());
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.auth_fail), Toast.LENGTH_SHORT);
+                toast.show();
             }
         }) {
             @Override

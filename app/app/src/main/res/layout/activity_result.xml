@@ -7,6 +7,15 @@
     tools:context=".TestActivity">
 
     <Button
+        android:id="@+id/btnPrevious"
+        android:layout_width="85dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
+        android:text="Пред. фактор"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNext" />
+
+    <Button
         android:id="@+id/btnToMenu"
         android:layout_width="80dp"
         android:layout_height="55dp"
@@ -255,7 +264,7 @@
         android:layout_width="303dp"
         android:layout_height="200dp"
         android:gravity="top|left"
-        android:text="Длинное описание нашего фактора, будь то Ориентация на настоящее или вообще Общий показатель самоорганизации"
+        android:text="@string/resultText"
         android:textColor="@color/question_text"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -268,7 +277,7 @@
         android:layout_height="27dp"
         android:layout_marginTop="8dp"
         android:gravity="top|left"
-        android:text="Описание результата: "
+        android:text="@string/resultTextHeader"
         android:textColor="@color/question_text"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"

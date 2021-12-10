@@ -46,7 +46,7 @@ public class AttemptsActivity extends AppCompatActivity implements AdapterView.O
 
     public void getResultsRequest() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://31.40.51.218:8080/api/test/attempts";
+        String url = getResources().getString(R.string.URL) + "/api/test/attempts";
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONObject>() {
                     @Override
@@ -148,7 +148,7 @@ public class AttemptsActivity extends AppCompatActivity implements AdapterView.O
                             }
                             if (amountFinishedAttempts == 0) {
                                 Toast toast = Toast.makeText(getApplicationContext(),
-                                        "История попыток пуста", Toast.LENGTH_SHORT);
+                                        getResources().getString(R.string.history_empty), Toast.LENGTH_SHORT);
                                 toast.show();
                             }
                         } catch (JSONException e) {
@@ -159,7 +159,7 @@ public class AttemptsActivity extends AppCompatActivity implements AdapterView.O
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast toast = Toast.makeText(getApplicationContext(),
-                        "Получить историю попыток не удалось", Toast.LENGTH_SHORT);
+                        getResources().getString(R.string.history_fail), Toast.LENGTH_SHORT);
                 toast.show();
             }
         }) {

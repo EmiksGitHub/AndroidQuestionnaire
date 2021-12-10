@@ -26,10 +26,11 @@ public class ResultActivity extends AppCompatActivity {
     private TextView descriptionHeader;
     private TextView description;
     private Button btnNext;
+    private Button btnPrevious;
 
     private String token;
     private JSONResult jsonResult;
-    private int currentFactor = 7;
+    private int currentFactor = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +54,23 @@ public class ResultActivity extends AppCompatActivity {
         descriptionHeader = (TextView) findViewById(R.id.descriptionHeader);
         description = (TextView) findViewById(R.id.description);
         btnNext = (Button) findViewById(R.id.btnNext);
+        btnPrevious = (Button) findViewById(R.id.btnPrevious);
 
-        View.OnClickListener buttonClickListener = new View.OnClickListener() {
+        View.OnClickListener btnClickNext = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nextFactor(currentFactor);
+                nextFactor(true);
             }
         };
-        btnNext.setOnClickListener(buttonClickListener);
+        btnNext.setOnClickListener(btnClickNext);
+
+        View.OnClickListener btnClickPrevious = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nextFactor(false);
+            }
+        };
+        btnPrevious.setOnClickListener(btnClickPrevious);
 
         point_general.setText(Integer.toString(jsonResult.getPoints_general()));
         point_plan.setText(Integer.toString(jsonResult.getPoints_plan()));
@@ -70,10 +80,24 @@ public class ResultActivity extends AppCompatActivity {
         point_samo.setText(Integer.toString(jsonResult.getPoints_samo()));
         point_orie.setText(Integer.toString(jsonResult.getPoints_orie()));
 
-        nextFactor(currentFactor);
+        nextFactor(true);
     }
 
-    private void nextFactor(int currentFactor) {
+    private void nextFactor(boolean isNext) {
+        if (isNext) {
+            if (currentFactor != 7) {
+                this.currentFactor++;
+            } else {
+                this.currentFactor = 1;
+            }
+        } else {
+            if (currentFactor != 1) {
+                this.currentFactor--;
+            } else {
+                this.currentFactor = 7;
+            }
+        }
+
         switch (currentFactor) {
             case 1:
                 headerNameFactor.setText("Показатель планомерности");
@@ -173,11 +197,6 @@ public class ResultActivity extends AppCompatActivity {
                 }
                 description.setText(jsonResult.getDescription_general());
                 break;
-        }
-        if (currentFactor != 7) {
-            this.currentFactor++;
-        } else {
-            this.currentFactor = 1;
         }
     }
 }

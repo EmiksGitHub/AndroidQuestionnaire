@@ -20,9 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -86,30 +86,41 @@ public class RegActivity extends AppCompatActivity implements TextWatcher {
         date = editTextRegDate.getText().toString();
         if (editTextRegNickname.getText().toString().length() <= 3) {
             Toast toast = Toast.makeText(getApplicationContext(),
-                    "Nickname должен состоять как минимум из 4 символов", Toast.LENGTH_SHORT);
+                    getResources().getString(R.string.reg_warn_1), Toast.LENGTH_SHORT);
             toast.show();
         } else {
             if (editTextRegNickname.getText().toString().length() > 30) {
                 Toast toast = Toast.makeText(getApplicationContext(),
-                        "Nickname должен состоять максимум из 30 символов", Toast.LENGTH_SHORT);
+                        getResources().getString(R.string.reg_warn_2), Toast.LENGTH_SHORT);
                 toast.show();
             } else {
                 if (editTextRegPassword.getText().toString().length() <= 3) {
                     Toast toast = Toast.makeText(getApplicationContext(),
-                            "Пароль должен состоять как минимум из 4 символов", Toast.LENGTH_SHORT);
+                            getResources().getString(R.string.reg_warn_3), Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
                     if (!isSexChecked) {
                         Toast toast = Toast.makeText(getApplicationContext(),
-                                "Пол должен быть отмечен", Toast.LENGTH_SHORT);
+                                getResources().getString(R.string.reg_warn_4), Toast.LENGTH_SHORT);
                         toast.show();
                     } else {
-                        if (date.length()==10) {
-                            dateNew = date.substring(6) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2);
-                            regRequest(v);
-                        } else {
+                        try {
+                            if (date.length()==10 &&
+                                    Integer.parseInt(date.substring(6)) <= Calendar.getInstance().get(Calendar.YEAR) &&
+                                    Integer.parseInt(date.substring(3,5)) <= 12 &&
+                                    Integer.parseInt(date.substring(0,2)) <=
+                                            getMaxDaysInMonth(Integer.parseInt(date.substring(3,5)),
+                                                    Integer.parseInt(date.substring(6)))) {
+                                dateNew = date.substring(6) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2);
+                                regRequest(v);
+                            } else {
+                                Toast toast = Toast.makeText(getApplicationContext(),
+                                        getResources().getString(R.string.reg_warn_5), Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
+                        } catch (Exception e) {
                             Toast toast = Toast.makeText(getApplicationContext(),
-                                    "Некорректно введена дата рождения", Toast.LENGTH_SHORT);
+                                    getResources().getString(R.string.reg_warn_5), Toast.LENGTH_SHORT);
                             toast.show();
                         }
                     }
@@ -118,9 +129,16 @@ public class RegActivity extends AppCompatActivity implements TextWatcher {
         }
     }
 
+    public int getMaxDaysInMonth(int month, int year) {
+        Calendar cal = Calendar.getInstance();
+        // Note: 0-based months
+        cal.set(year, month-1, 1);
+        return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+    }
+
     public void regRequest(View view) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String URL = "http://31.40.51.218:8080/api/auth/signup";
+        String URL =  getResources().getString(R.string.URL) + "/api/auth/signup";
         Map params = new HashMap();
         params.put("age", dateNew);
         params.put("password", editTextRegPassword.getText().toString());
@@ -131,21 +149,17 @@ public class RegActivity extends AppCompatActivity implements TextWatcher {
                 new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                try {
-                    Toast toast = Toast.makeText(getApplicationContext(),
-                            (response.getString("message")), Toast.LENGTH_SHORT);
-                    goToAuthActivity();
-                    toast.show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.reg_succ), Toast.LENGTH_SHORT);
+                goToAuthActivity();
+                toast.show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Response error", "" + error);
                 Toast toast = Toast.makeText(getApplicationContext(),
-                        "Регистрация не удалась", Toast.LENGTH_SHORT);
+                        getResources().getString(R.string.reg_fail), Toast.LENGTH_SHORT);
                 toast.show();
             }
         }) {

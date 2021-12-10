@@ -100,7 +100,7 @@ public class TestActivity extends AppCompatActivity {
 
     public void getAnswers () {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://31.40.51.218:8080/api/test/answers";
+        String url = getResources().getString(R.string.URL) + "/api/test/answers";
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url,
                 null,
                 new Response.Listener<JSONObject>() {
@@ -153,7 +153,7 @@ public class TestActivity extends AppCompatActivity {
 
     public void getQuestion() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://31.40.51.218:8080/api/test/questions";
+        String url = getResources().getString(R.string.URL) + "/api/test/questions";
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONObject>() {
                     @Override
@@ -206,7 +206,7 @@ public class TestActivity extends AppCompatActivity {
         Map params = new HashMap();
         params.put("idA", numberButton);
         params.put("idQ", Long.toString(currentQuestion.getId()));
-        String URL = "http://31.40.51.218:8080/api/test/giveAnswer";
+        String URL =  getResources().getString(R.string.URL) + "/api/test/giveAnswer";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL,
                 new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -240,7 +240,7 @@ public class TestActivity extends AppCompatActivity {
     public void finishAttempt() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         Map params = new HashMap();
-        String URL = "http://31.40.51.218:8080/api/test/finishAttempt";
+        String URL =  getResources().getString(R.string.URL) + "/api/test/finishAttempt";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL,
                 new JSONObject(params),
                 new Response.Listener<JSONObject>() {
@@ -276,7 +276,7 @@ public class TestActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         Map params = new HashMap();
         params.put("id", id);
-        String URL = "http://31.40.51.218:8080/api/test/getResults";
+        String URL =  getResources().getString(R.string.URL) + "/api/test/getResults";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,URL, new JSONObject(params),
                 new Response.Listener<JSONObject>() {
                     @Override
