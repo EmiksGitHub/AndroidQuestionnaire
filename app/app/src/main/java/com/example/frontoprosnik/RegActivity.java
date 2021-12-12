@@ -175,6 +175,7 @@ public class RegActivity extends AppCompatActivity implements TextWatcher {
     private void goToAuthActivity() {
         Intent i = new Intent(this, AuthActivity.class);
         startActivity(i);
+        finish();
     }
 
     @Override

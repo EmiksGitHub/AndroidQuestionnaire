@@ -29,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView textViewProfileAgeResponse;
     private TextView textViewProfileSexResponse;
     private Button btnProfileAttempts;
+    private Button btnProfileChangeNickname;
     private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +42,22 @@ public class ProfileActivity extends AppCompatActivity {
         textViewProfileAgeResponse = (TextView) findViewById(R.id.textViewProfileAgeResponse);
         textViewProfileSexResponse = (TextView) findViewById(R.id.textViewProfileSexResponse);
         btnProfileAttempts = (Button) findViewById(R.id.btnProfileAttempts);
+        btnProfileChangeNickname = (Button) findViewById(R.id.btnProfileChangeNickname);
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToAttemptsActivity();
+                switch (v.getId()) {
+                    case R.id.btnProfileAttempts:
+                        goToAttemptsActivity();
+                        break;
+                    case R.id.btnProfileChangeNickname:
+                        goToChangeNicknameActivity();
+                        break;
+                }
             }
         };
         btnProfileAttempts.setOnClickListener(buttonClickListener);
+        btnProfileChangeNickname.setOnClickListener(buttonClickListener);
 
         getAccountRequest();
     }
@@ -95,6 +105,12 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void goToAttemptsActivity() {
         Intent i = new Intent(this, AttemptsActivity.class);
+        i.putExtra("token_key", token);
+        startActivity(i);
+    }
+
+    public void goToChangeNicknameActivity() {
+        Intent i = new Intent(this, ChangeNicknameActivity.class);
         i.putExtra("token_key", token);
         startActivity(i);
     }

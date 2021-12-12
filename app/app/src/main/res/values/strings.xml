@@ -63,4 +63,9 @@
     <string name="deskHeaderHigh">Considered a high rate</string>
     <string name="deskHeaderLow">Considered low</string>
     <string name="deskHeaderMiddle">It is considered an average indicator (range</string>
+    <string name="changeNickname">CHANGE</string>
+    <string name="timer">00:00</string>
+    <string name="nicknameNow">Enter your new nickname: </string>
+    <string name="nicknameChangeSucc">Nickname has been successfully updated to: </string>
+    <string name="nicknameChangeFailed">Nickname change failed.</string>
 </resources>

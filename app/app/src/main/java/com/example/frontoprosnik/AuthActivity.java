@@ -83,5 +83,6 @@ public class AuthActivity extends AppCompatActivity {
         Intent main = new Intent(this, MainActivity.class);
         main.putExtra("token_key", string);
         startActivity(main);
+        finish();
     }
 }

@@ -21,75 +21,87 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewProfileSex" />
 
+    <Button
+        android:id="@+id/btnProfileChangeNickname"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/default_btn"
+        android:text="@string/changeNickname"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewProfileUsername"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textViewProfileAgeResponse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center|start"
         android:text="@string/thereWillBeSomethingHere"
-        android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/textViewProfileUsername"
         app:layout_constraintTop_toBottomOf="@+id/textViewProfileUsernameResponse" />
 
     <TextView
         android:id="@+id/textViewProfileSexResponse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center|start"
         android:text="@string/thereWillBeSomethingHere"
-        android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/textViewProfileUsername"
         app:layout_constraintTop_toBottomOf="@+id/textViewProfileAgeResponse" />
 
     <TextView
         android:id="@+id/textViewProfileAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="start|center_vertical"
         android:text="@string/age"
-        android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewProfileUsername" />
 
     <TextView
         android:id="@+id/textViewProfileSex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="start|center_vertical"
         android:text="@string/gender_show"
-        android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewProfileAge" />
 
     <TextView
         android:id="@+id/textViewProfileUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:gravity="start|center_vertical"
         android:text="@string/name_user"
-        android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewProfileUsernameResponse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_width="400dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
+        android:gravity="center|start"
         android:text="@string/thereWillBeSomethingHere"
-        android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/textViewProfileUsername"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -168,7 +168,7 @@
 
     <TextView
         android:id="@+id/FactorHeader"
-        android:layout_width="198dp"
+        android:layout_width="204dp"
         android:layout_height="30dp"
         android:layout_marginStart="9999dp"
         android:layout_marginTop="5dp"
@@ -211,21 +211,8 @@
         app:layout_constraintTop_toBottomOf="@+id/deskHeaderPoint" />
 
     <TextView
-        android:id="@+id/factor_plan"
-        android:layout_width="198dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="9999dp"
-        android:gravity="center|left"
-        android:text="@string/planTable"
-        android:textColor="@color/question_text"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/point_plan"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/factor_plan2" />
-
-    <TextView
-        android:id="@+id/factor_plan2"
-        android:layout_width="198dp"
+        android:id="@+id/factor_general"
+        android:layout_width="204dp"
         android:layout_height="30dp"
         android:layout_marginStart="9999dp"
         android:gravity="center|left"
@@ -235,6 +222,19 @@
         app:layout_constraintEnd_toStartOf="@+id/point_general"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FactorHeader" />
+
+    <TextView
+        android:id="@+id/factor_plan"
+        android:layout_width="204dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="9999dp"
+        android:gravity="center|left"
+        android:text="@string/planTable"
+        android:textColor="@color/question_text"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/point_plan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/factor_general" />
 
     <TextView
         android:id="@+id/point_plan"
@@ -257,7 +257,7 @@
         android:textColor="@color/question_text"
         android:textSize="16dp"
         app:layout_constraintEnd_toStartOf="@+id/point_plan_middle3"
-        app:layout_constraintStart_toEndOf="@+id/factor_plan2"
+        app:layout_constraintStart_toEndOf="@+id/factor_general"
         app:layout_constraintTop_toBottomOf="@+id/PointHeader" />
 
     <TextView
@@ -287,7 +287,7 @@
 
     <TextView
         android:id="@+id/factor_cele"
-        android:layout_width="198dp"
+        android:layout_width="204dp"
         android:layout_height="30dp"
         android:layout_marginStart="9999dp"
         android:gravity="center|left"
@@ -300,7 +300,7 @@
 
     <TextView
         android:id="@+id/factor_nast"
-        android:layout_width="198dp"
+        android:layout_width="204dp"
         android:layout_height="30dp"
         android:layout_marginStart="9999dp"
         android:gravity="center|left"
@@ -313,7 +313,7 @@
 
     <TextView
         android:id="@+id/factor_fiks"
-        android:layout_width="198dp"
+        android:layout_width="204dp"
         android:layout_height="30dp"
         android:layout_marginStart="9999dp"
         android:gravity="center|left"
@@ -326,7 +326,7 @@
 
     <TextView
         android:id="@+id/factor_samo"
-        android:layout_width="198dp"
+        android:layout_width="204dp"
         android:layout_height="30dp"
         android:layout_marginStart="9999dp"
         android:gravity="center|left"
@@ -339,7 +339,7 @@
 
     <TextView
         android:id="@+id/factor_orie"
-        android:layout_width="198dp"
+        android:layout_width="204dp"
         android:layout_height="30dp"
         android:layout_marginStart="9999dp"
         android:gravity="center|left"

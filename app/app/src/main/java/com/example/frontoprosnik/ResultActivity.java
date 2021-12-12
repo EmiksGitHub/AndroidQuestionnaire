@@ -1,6 +1,7 @@
 package com.example.frontoprosnik;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,13 @@ public class ResultActivity extends AppCompatActivity {
     private TextView point_fiks;
     private TextView point_samo;
     private TextView point_orie;
+    private TextView factor_general;
+    private TextView factor_plan;
+    private TextView factor_cele;
+    private TextView factor_nast;
+    private TextView factor_fiks;
+    private TextView factor_samo;
+    private TextView factor_orie;
     private TextView deskHeaderPoint;
     private TextView descriptionHeader;
     private TextView description;
@@ -52,6 +60,13 @@ public class ResultActivity extends AppCompatActivity {
         point_fiks = (TextView) findViewById(R.id.point_fiks);
         point_samo = (TextView) findViewById(R.id.point_samo);
         point_orie = (TextView) findViewById(R.id.point_orie);
+        factor_general = (TextView) findViewById(R.id.factor_general);
+        factor_plan = (TextView) findViewById(R.id.factor_plan);
+        factor_cele = (TextView) findViewById(R.id.factor_cele);
+        factor_nast = (TextView) findViewById(R.id.factor_nast);
+        factor_fiks = (TextView) findViewById(R.id.factor_fiks);
+        factor_samo = (TextView) findViewById(R.id.factor_samo);
+        factor_orie = (TextView) findViewById(R.id.factor_orie);
         descriptionHeader = (TextView) findViewById(R.id.descriptionHeader);
         description = (TextView) findViewById(R.id.description);
         btnNext = (Button) findViewById(R.id.btnNext);
@@ -97,6 +112,17 @@ public class ResultActivity extends AppCompatActivity {
         Intent i = new Intent(this, MainActivity.class);
         i.putExtra("token_key", token);
         startActivity(i);
+        finish();
+    }
+
+    private void setNormalBoldFactors() {
+        factor_general.setTypeface(null, Typeface.NORMAL);
+        factor_plan.setTypeface(null, Typeface.NORMAL);
+        factor_cele.setTypeface(null, Typeface.NORMAL);
+        factor_nast.setTypeface(null, Typeface.NORMAL);
+        factor_fiks.setTypeface(null, Typeface.NORMAL);
+        factor_samo.setTypeface(null, Typeface.NORMAL);
+        factor_orie.setTypeface(null, Typeface.NORMAL);
     }
 
     private void nextFactor(boolean isNext) {
@@ -116,6 +142,8 @@ public class ResultActivity extends AppCompatActivity {
 
         switch (currentFactor) {
             case 1:
+                setNormalBoldFactors();
+                factor_plan.setTypeface(null, Typeface.BOLD);
                 headerNameFactor.setText(getResources().getString(R.string.planHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_plan()));
                 if (jsonResult.getPoints_plan() > 24) {
@@ -130,6 +158,8 @@ public class ResultActivity extends AppCompatActivity {
                 description.setText(jsonResult.getDescription_plan());
                 break;
             case 2:
+                setNormalBoldFactors();
+                factor_cele.setTypeface(null, Typeface.BOLD);
                 headerNameFactor.setText(getResources().getString(R.string.celeHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_cele()));
                 if (jsonResult.getPoints_cele() > 38) {
@@ -144,6 +174,8 @@ public class ResultActivity extends AppCompatActivity {
                 description.setText(jsonResult.getDescription_cele());
                 break;
             case 3:
+                setNormalBoldFactors();
+                factor_nast.setTypeface(null, Typeface.BOLD);
                 headerNameFactor.setText(getResources().getString(R.string.nastHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_nast()));
                 if (jsonResult.getPoints_nast() > 25) {
@@ -158,6 +190,8 @@ public class ResultActivity extends AppCompatActivity {
                 description.setText(jsonResult.getDescription_nast());
                 break;
             case 4:
+                setNormalBoldFactors();
+                factor_fiks.setTypeface(null, Typeface.BOLD);
                 headerNameFactor.setText(getResources().getString(R.string.fiksHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_fiks()));
                 if (jsonResult.getPoints_fiks() > 24) {
@@ -172,6 +206,8 @@ public class ResultActivity extends AppCompatActivity {
                 description.setText(jsonResult.getDescription_fiks());
                 break;
             case 5:
+                setNormalBoldFactors();
+                factor_samo.setTypeface(null, Typeface.BOLD);
                 headerNameFactor.setText(getResources().getString(R.string.samoHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_samo()));
                 if (jsonResult.getPoints_samo() > 15) {
@@ -186,6 +222,8 @@ public class ResultActivity extends AppCompatActivity {
                 description.setText(jsonResult.getDescription_samo());
                 break;
             case 6:
+                setNormalBoldFactors();
+                factor_orie.setTypeface(null, Typeface.BOLD);
                 headerNameFactor.setText(getResources().getString(R.string.orieHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_orie()));
                 if (jsonResult.getPoints_orie() > 10) {
@@ -200,6 +238,8 @@ public class ResultActivity extends AppCompatActivity {
                 description.setText(jsonResult.getDescription_orie());
                 break;
             case 7:
+                setNormalBoldFactors();
+                factor_general.setTypeface(null, Typeface.BOLD);
                 headerNameFactor.setText(getResources().getString(R.string.generalHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_general()));
                 if (jsonResult.getPoints_general() > 124) {

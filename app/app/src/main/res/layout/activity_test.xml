@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="10dp"
-        android:text="*GoTimeTest*"
+        android:text="@string/timer"
         android:textAlignment="textStart"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"

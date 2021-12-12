@@ -396,6 +396,7 @@ public class TestActivity extends AppCompatActivity {
         i.putExtra("token_key", token);
         i.putExtra("JSONResult", jsonResult);
         startActivity(i);
+        finish();
     }
 
     private void runTimer() {

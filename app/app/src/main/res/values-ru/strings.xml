@@ -63,4 +63,9 @@
     <string name="deskHeaderHigh">Считается высоким показателем</string>
     <string name="deskHeaderLow">Считается низким показателем</string>
     <string name="deskHeaderMiddle">Считается средним показателем (диапазон</string>
+    <string name="changeNickname">ИЗМЕНИТЬ</string>
+    <string name="timer">00:00</string>
+    <string name="nicknameNow">Введите ваш новый никнейм: </string>
+    <string name="nicknameChangeSucc">Никнейм успешно обновлен на: </string>
+    <string name="nicknameChangeFailed">Смена никнейма завершилась неудачей.</string>
 </resources>
