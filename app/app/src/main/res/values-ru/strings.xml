@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Тест Самоорганизации</string>
+    <string name="app_name">SelfOrgTest</string>
     <string name="URL">http://31.40.51.218:8080</string>
     <string name="language">EN</string>
     <string name="profile">ЛИЧНЫЙ КАБИНЕТ</string>
@@ -38,4 +38,29 @@
     <string name="reg_warn_3">Пароль должен состоять как минимум из 4 символов</string>
     <string name="reg_warn_4">Пол должен быть отмечен</string>
     <string name="reg_warn_5">Некорректно введена дата рождения</string>
+    <string name="btnToMenu">Меню</string>
+    <string name="btnPrev">Пред. фактор</string>
+    <string name="btnNext">Следующий фактор</string>
+    <string name="factorHeadTable">Фактор</string>
+    <string name="scoreHeadTable">Балл</string>
+    <string name="middleHeadTable">Средний</string>
+    <string name="generalTable">Общий показатель</string>
+    <string name="planTable">Планомерность</string>
+    <string name="celeTable">Целеустремленность</string>
+    <string name="nastTable">Настойчивость</string>
+    <string name="fiksTable">Фиксация</string>
+    <string name="samoTable">Самоорганизация</string>
+    <string name="orieTable">Ориентация на настоящее</string>
+
+    <string name="generalHeader">Общий показатель самоорганизации</string>
+    <string name="planHeader">Показатель планомерности</string>
+    <string name="celeHeader">Показатель целеустремленности</string>
+    <string name="nastHeader">Показатель настойчивости</string>
+    <string name="fiksHeader">Показатель фиксации</string>
+    <string name="samoHeader">Показатель самоорганизации</string>
+    <string name="orieHeader">Показатель ориентации на настоящее</string>
+
+    <string name="deskHeaderHigh">Считается высоким показателем</string>
+    <string name="deskHeaderLow">Считается низким показателем</string>
+    <string name="deskHeaderMiddle">Считается средним показателем (диапазон</string>
 </resources>

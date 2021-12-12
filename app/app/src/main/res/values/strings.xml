@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OrgTest</string>
+    <string name="app_name">SelfOrgTest</string>
     <string name="URL">http://31.40.51.218:8081</string>
     <string name="language">RU</string>
     <string name="profile">PROFILE</string>
@@ -38,4 +38,29 @@
     <string name="reg_warn_3">Password must be at least 4 characters long</string>
     <string name="reg_warn_4">Gender must be marked</string>
     <string name="reg_warn_5">Date of birth entered incorrectly</string>
+    <string name="btnToMenu">Menu</string>
+    <string name="btnPrev">Prev. factor</string>
+    <string name="btnNext">The next factor</string>
+    <string name="factorHeadTable">Factor</string>
+    <string name="scoreHeadTable">Point</string>
+    <string name="middleHeadTable">Average</string>
+    <string name="generalTable">General indicator</string>
+    <string name="planTable">Plannedness</string>
+    <string name="celeTable">Purposefulness</string>
+    <string name="nastTable">Persistence</string>
+    <string name="fiksTable">Fixation</string>
+    <string name="samoTable">Self-organization</string>
+    <string name="orieTable">Present orientation</string>
+
+    <string name="generalHeader">General indicator of self-organization</string>
+    <string name="planHeader">Consistency indicator</string>
+    <string name="celeHeader">Indicator of purposefulness</string>
+    <string name="nastHeader">Persistence indicator</string>
+    <string name="fiksHeader">Fixation indicator</string>
+    <string name="samoHeader">Self-organization indicator</string>
+    <string name="orieHeader">Present orientation indicator</string>
+
+    <string name="deskHeaderHigh">Considered a high rate</string>
+    <string name="deskHeaderLow">Considered low</string>
+    <string name="deskHeaderMiddle">It is considered an average indicator (range</string>
 </resources>

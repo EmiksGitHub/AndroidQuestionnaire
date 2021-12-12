@@ -65,7 +65,7 @@ public class ProfileActivity extends AppCompatActivity {
                                         "username"));
                                 textViewProfileAgeResponse.setText(response.getString("age"));
                                 textViewProfileSexResponse.setText(response.getBoolean(
-                                        "sexM") ? "Мужской" : "Женский");
+                                        "sexM") ? getResources().getString(R.string.male) : getResources().getString(R.string.female));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

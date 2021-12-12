@@ -27,6 +27,7 @@ public class ResultActivity extends AppCompatActivity {
     private TextView description;
     private Button btnNext;
     private Button btnPrevious;
+    private Button btnToMenu;
 
     private String token;
     private JSONResult jsonResult;
@@ -55,6 +56,7 @@ public class ResultActivity extends AppCompatActivity {
         description = (TextView) findViewById(R.id.description);
         btnNext = (Button) findViewById(R.id.btnNext);
         btnPrevious = (Button) findViewById(R.id.btnPrevious);
+        btnToMenu = (Button) findViewById(R.id.btnToMenu);
 
         View.OnClickListener btnClickNext = new View.OnClickListener() {
             @Override
@@ -70,7 +72,15 @@ public class ResultActivity extends AppCompatActivity {
                 nextFactor(false);
             }
         };
+
+        View.OnClickListener btnClickMenu = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToMainActivity();
+            }
+        };
         btnPrevious.setOnClickListener(btnClickPrevious);
+        btnToMenu.setOnClickListener(btnClickMenu);
 
         point_general.setText(Integer.toString(jsonResult.getPoints_general()));
         point_plan.setText(Integer.toString(jsonResult.getPoints_plan()));
@@ -81,6 +91,12 @@ public class ResultActivity extends AppCompatActivity {
         point_orie.setText(Integer.toString(jsonResult.getPoints_orie()));
 
         nextFactor(true);
+    }
+
+    private void goToMainActivity() {
+        Intent i = new Intent(this, MainActivity.class);
+        i.putExtra("token_key", token);
+        startActivity(i);
     }
 
     private void nextFactor(boolean isNext) {
@@ -100,99 +116,99 @@ public class ResultActivity extends AppCompatActivity {
 
         switch (currentFactor) {
             case 1:
-                headerNameFactor.setText("Показатель планомерности");
+                headerNameFactor.setText(getResources().getString(R.string.planHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_plan()));
                 if (jsonResult.getPoints_plan() > 24) {
-                    deskHeaderPoint.setText("Считается высоким показателем (>24)");
+                    deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderHigh) + " (>24)");
                 } else {
                     if (jsonResult.getPoints_plan() < 14) {
-                        deskHeaderPoint.setText("Считается низким показателем (<14)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderLow) + " (<14)");
                     } else {
-                        deskHeaderPoint.setText("Считается средним показателем (диапазон 14-24)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderMiddle) + " 14-24)");
                     }
                 }
                 description.setText(jsonResult.getDescription_plan());
                 break;
             case 2:
-                headerNameFactor.setText("Показатель целеустремленности");
+                headerNameFactor.setText(getResources().getString(R.string.celeHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_cele()));
                 if (jsonResult.getPoints_cele() > 38) {
-                    deskHeaderPoint.setText("Считается высоким показателем (>38)");
+                    deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderHigh) + " (>38)");
                 } else {
                     if (jsonResult.getPoints_cele() < 28) {
-                        deskHeaderPoint.setText("Считается низким показателем (<28)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderLow) + " (<28)");
                     } else {
-                        deskHeaderPoint.setText("Считается средним показателем (диапазон 28-38)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderMiddle) + " 28-38)");
                     }
                 }
                 description.setText(jsonResult.getDescription_cele());
                 break;
             case 3:
-                headerNameFactor.setText("Показатель настойчивости");
+                headerNameFactor.setText(getResources().getString(R.string.nastHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_nast()));
                 if (jsonResult.getPoints_nast() > 25) {
-                    deskHeaderPoint.setText("Считается высоким показателем (>25)");
+                    deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderHigh) + " (>25)");
                 } else {
                     if (jsonResult.getPoints_nast() < 14) {
-                        deskHeaderPoint.setText("Считается низким показателем (<14)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderLow) + " (<14)");
                     } else {
-                        deskHeaderPoint.setText("Считается средним показателем (диапазон 14-25)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderMiddle) + " 14-25)");
                     }
                 }
                 description.setText(jsonResult.getDescription_nast());
                 break;
             case 4:
-                headerNameFactor.setText("Показатель фиксации");
+                headerNameFactor.setText(getResources().getString(R.string.fiksHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_fiks()));
                 if (jsonResult.getPoints_fiks() > 24) {
-                    deskHeaderPoint.setText("Считается высоким показателем (>24)");
+                    deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderHigh) + " (>24)");
                 } else {
                     if (jsonResult.getPoints_fiks() < 14) {
-                        deskHeaderPoint.setText("Считается низким показателем (<14)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderLow) + " (<14)");
                     } else {
-                        deskHeaderPoint.setText("Считается средним показателем (диапазон 14-24)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderMiddle) + " 14-24)");
                     }
                 }
                 description.setText(jsonResult.getDescription_fiks());
                 break;
             case 5:
-                headerNameFactor.setText("Показатель самоорганизации");
+                headerNameFactor.setText(getResources().getString(R.string.samoHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_samo()));
                 if (jsonResult.getPoints_samo() > 15) {
-                    deskHeaderPoint.setText("Считается высоким показателем (>15)");
+                    deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderHigh) + " (>15)");
                 } else {
                     if (jsonResult.getPoints_samo() < 5) {
-                        deskHeaderPoint.setText("Считается низким показателем (<5)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderLow) + " (<5)");
                     } else {
-                        deskHeaderPoint.setText("Считается средним показателем (диапазон 5-15)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderMiddle) + " 5-15)");
                     }
                 }
                 description.setText(jsonResult.getDescription_samo());
                 break;
             case 6:
-                headerNameFactor.setText("Показатель ориентации на настоящее");
+                headerNameFactor.setText(getResources().getString(R.string.orieHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_orie()));
                 if (jsonResult.getPoints_orie() > 10) {
-                    deskHeaderPoint.setText("Считается высоким показателем (>10)");
+                    deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderHigh) + " (>10)");
                 } else {
                     if (jsonResult.getPoints_orie() < 7) {
-                        deskHeaderPoint.setText("Считается низким показателем (<7)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderLow) + " (<7)");
                     } else {
-                        deskHeaderPoint.setText("Считается средним показателем (диапазон 7-10)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderMiddle) + " 7-10)");
                     }
                 }
                 description.setText(jsonResult.getDescription_orie());
                 break;
             case 7:
-                headerNameFactor.setText("Общий показатель самоорганизации");
+                headerNameFactor.setText(getResources().getString(R.string.generalHeader));
                 headerPoints.setText(Integer.toString(jsonResult.getPoints_general()));
                 if (jsonResult.getPoints_general() > 124) {
-                    deskHeaderPoint.setText("Считается высоким показателем (>124)");
+                    deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderHigh) + " (>124)");
                 } else {
                     if (jsonResult.getPoints_general() < 94) {
-                        deskHeaderPoint.setText("Считается низким показателем (<94)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderLow) + " (<94)");
                     } else {
-                        deskHeaderPoint.setText("Считается средним показателем (диапазон 94-124)");
+                        deskHeaderPoint.setText(getResources().getString(R.string.deskHeaderMiddle) + " 94-124)");
                     }
                 }
                 description.setText(jsonResult.getDescription_general());

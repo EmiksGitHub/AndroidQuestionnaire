@@ -2,6 +2,7 @@ package com.example.frontoprosnik;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +45,8 @@ public class TestActivity extends AppCompatActivity {
     private String token;
     private List<JSONQuestion> questionList = new ArrayList<>();
     private JSONQuestion currentQuestion = new JSONQuestion();
+    private boolean running;
+    private int seconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +54,10 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
         Intent intent = getIntent();
         token = intent.getStringExtra("token_key");
+        runTimer();
+        running = true;
         textViewTestQuestion = (TextView) findViewById(R.id.textViewQuestion);
-        textViewTest2 = (TextView) findViewById(R.id.textViewTest2);
+        textViewTest2 = (TextView) findViewById(R.id.textViewQuestionNumb);
         btnTest1 = (Button) findViewById(R.id.btnTest1);
         btnTest2 = (Button) findViewById(R.id.btnTest2);
         btnTest3 = (Button) findViewById(R.id.btnTest3);
@@ -391,5 +396,23 @@ public class TestActivity extends AppCompatActivity {
         i.putExtra("token_key", token);
         i.putExtra("JSONResult", jsonResult);
         startActivity(i);
+    }
+
+    private void runTimer() {
+        final TextView textViewTimer = (TextView) findViewById(R.id.textViewTimer);
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                int minutes = (seconds%3600)/60;
+                int secon = seconds%60;
+                String time = String.format("%02d:%02d", minutes, secon);
+                textViewTimer.setText(time);
+                if (running) {
+                    seconds++;
+                    handler.postDelayed(this, 1000);
+                }
+            }
+        });
     }
 }
