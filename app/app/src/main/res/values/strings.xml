@@ -68,4 +68,6 @@
     <string name="nicknameNow">Enter your new nickname: </string>
     <string name="nicknameChangeSucc">Nickname has been successfully updated to: </string>
     <string name="nicknameChangeFailed">Nickname change failed.</string>
+    <string name="goWithoutAuth">Take the test without authorization</string>
+    <string name="hist">Your attempts:</string>
 </resources>

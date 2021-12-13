@@ -38,6 +38,7 @@ public class ResultActivity extends AppCompatActivity {
     private Button btnToMenu;
 
     private String token;
+    private String isAuth;
     private JSONResult jsonResult;
     private int currentFactor = 6;
 
@@ -48,6 +49,7 @@ public class ResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         token = intent.getStringExtra("token_key");
+        isAuth = intent.getStringExtra("isAuth");
         jsonResult = (JSONResult) intent.getSerializableExtra("JSONResult");
 
         headerNameFactor = (TextView) findViewById(R.id.headerNameFactor);
@@ -110,7 +112,9 @@ public class ResultActivity extends AppCompatActivity {
 
     private void goToMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("token_key", token);
+        if (isAuth.equals("yes")) {
+            i.putExtra("token_key", token);
+        }
         startActivity(i);
         finish();
     }

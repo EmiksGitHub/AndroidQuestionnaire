@@ -68,4 +68,6 @@
     <string name="nicknameNow">Введите ваш новый никнейм: </string>
     <string name="nicknameChangeSucc">Никнейм успешно обновлен на: </string>
     <string name="nicknameChangeFailed">Смена никнейма завершилась неудачей.</string>
+    <string name="goWithoutAuth">Пройти тест без авторизации</string>
+    <string name="hist">Ваши попытки:</string>
 </resources>

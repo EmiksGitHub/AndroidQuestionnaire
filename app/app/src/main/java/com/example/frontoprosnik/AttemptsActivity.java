@@ -212,6 +212,7 @@ public class AttemptsActivity extends AppCompatActivity implements AdapterView.O
         Intent i = new Intent(this, ResultActivity.class);
         i.putExtra("token_key", token);
         i.putExtra("JSONResult", jsonResult);
+        i.putExtra("isAuth", "yes");
         startActivity(i);
     }
 }

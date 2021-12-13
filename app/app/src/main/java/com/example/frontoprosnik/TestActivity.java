@@ -47,6 +47,7 @@ public class TestActivity extends AppCompatActivity {
     private JSONQuestion currentQuestion = new JSONQuestion();
     private boolean running;
     private int seconds;
+    private String isAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
         Intent intent = getIntent();
         token = intent.getStringExtra("token_key");
+        isAuth = intent.getStringExtra("isAuth");
         runTimer();
         running = true;
         textViewTestQuestion = (TextView) findViewById(R.id.textViewQuestion);
@@ -395,6 +397,7 @@ public class TestActivity extends AppCompatActivity {
         Intent i = new Intent(this, ResultActivity.class);
         i.putExtra("token_key", token);
         i.putExtra("JSONResult", jsonResult);
+        i.putExtra("isAuth", isAuth);
         startActivity(i);
         finish();
     }

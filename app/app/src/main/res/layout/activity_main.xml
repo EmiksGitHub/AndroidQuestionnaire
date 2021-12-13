@@ -11,29 +11,29 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="416dp"
+        android:layout_marginTop="370dp"
         android:layout_marginEnd="20dp"
         android:background="@color/accent"
         android:text="@string/auth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnMainGoTest"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="416dp"
+        android:layout_marginTop="370dp"
         android:layout_marginEnd="20dp"
         android:background="@color/accent"
         android:text="@string/go_test"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
 
     <Button
         android:id="@+id/btnMainProfile"
@@ -47,7 +47,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMainGoTest" />
+        app:layout_constraintTop_toBottomOf="@+id/btnMainGoTest"
+        tools:visibility="invisible" />
 
     <Button
         android:id="@+id/btnMainReg"
@@ -61,8 +62,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMainGoTest"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/btnMainGoTest" />
+
+    <Button
+        android:id="@+id/btnMainWithoutAuth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/default_btn"
+        android:text="@string/goWithoutAuth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMainProfile" />
 
     <Button
         android:id="@+id/btnLanguage"
